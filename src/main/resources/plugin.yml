@@ -1,0 +1,37 @@
+name: nuclearweapon
+version: '${project.version}'
+main: org.oceangrad.nuclearweapon.NuclearWeapon
+api-version: '1.19'
+commands:
+  createBomb:
+    usage: /createBomb <x | y | z>
+    permission: nuclear.admin
+    permission-message: You dont have a permission!
+  giveBomb:
+    usage: /giveBomb
+    permission: nuclear.admin
+    permission-message: You dont have a permission!
+  cure:
+    usage: /cure <this | all>
+    description: cures a poisoned zone you're standing in
+    permission: nuclear.admin
+    permission-message: You dont have a permission!
+  cureWorld:
+    usage: /cureWorld <world>
+    description: cures a whole world
+    permission: nuclear.admin
+    permission-message: You dont have a permission!
+  clearSideEffect:
+    usage: /clearSideEffect <player>
+    description: clears side-effect from a player
+    permission: nuclear.admin
+    permission-message: You dont have a permission!
+  giveHazmat:
+    usage: /givehazmat
+    description: gives you a hazmat hat
+    permission: nuclear.admin
+    permission-message: You dont have a permission!
+permissions:
+  nuclear.admin:
+    description: Allows to use admin commands for this plugin
+    default: op
