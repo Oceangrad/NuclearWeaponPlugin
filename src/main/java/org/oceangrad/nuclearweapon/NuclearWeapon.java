@@ -147,7 +147,7 @@ public final class NuclearWeapon extends JavaPlugin {
 
     // РЕКОМЕНДУЕМЫЙ РАДИУС ЗАПУСКА - 100 БЛОКОВ
     public static void launchNuclear(World world, Vector from, Vector to){
-        Firework nuclear = (Firework) world.spawnEntity(new Location(world, from.getX(), from.getY(), from.getZ()), EntityType.FIREWORK);
+        Firework nuclear = (Firework) world.spawnEntity(new Location(world, from.getX(), from.getY(), from.getZ()), EntityType.FIREWORK_ROCKET);
         PersistentDataContainer nuclearData = nuclear.getPersistentDataContainer();
 
         nuclearData.set(NamespacedKey.fromString("is-nuclear"), PersistentDataType.INTEGER, 0);
@@ -285,8 +285,8 @@ public final class NuclearWeapon extends JavaPlugin {
 
                                         }
                                         else{
-                                            if(hazmatMeta.hasEnchant(Enchantment.DURABILITY)){
-                                                float enLevel = hazmatMeta.getEnchantLevel(Enchantment.DURABILITY);
+                                            if(hazmatMeta.hasEnchant(Enchantment.UNBREAKING)){
+                                                float enLevel = hazmatMeta.getEnchantLevel(Enchantment.UNBREAKING);
                                                 float randFloat = new Random().nextFloat();
 
                                                 if(randFloat > enLevel/4){

@@ -8,7 +8,7 @@ public final class PoisonSideEffects {
     public static final List<PoisonSideEffect> POISONED_SIDE_EFFECTS = List.of(
             new PoisonSideEffect(1, PotionEffectType.POISON),
             new PoisonSideEffect(1, PotionEffectType.BLINDNESS),
-            new PoisonSideEffect(1, PotionEffectType.CONFUSION),
+            new PoisonSideEffect(1, PotionEffectType.NAUSEA),
             new PoisonSideEffect(4, PotionEffectType.HUNGER)
     );
 

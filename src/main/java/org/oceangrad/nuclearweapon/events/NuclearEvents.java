@@ -100,31 +100,20 @@ public class NuclearEvents implements Listener {
 
     @EventHandler
     public static void ProgramNuclearWithCoords(CraftItemEvent event){
-//        ItemStack nuclear = event.getInventory().all(Material.FIREWORK_ROCKET).get(0);
-//        ItemStack coordsPaper = event.getInventory().all(Material.PAPER).get(0);
+        List<ItemStack> items = Arrays.stream(event.getInventory().getMatrix())
+                .filter(item ->
+                        item != null &&
+                                (item.getType() == Material.FIREWORK_ROCKET ||
+                                item.getType() == Material.PAPER))
+                .toList();
 
-/*
-        for (ItemStack itemStack : event.getInventory().getMatrix()) {
-            if(itemStack == null)
-                continue;
-            Bukkit.broadcastMessage(itemStack.getType().toString());
-        }
-*/
+        if (items.size() != 2) return;
 
-        ItemStack nuclear = Arrays.stream(event.getInventory().getMatrix())
-                .filter(item -> item != null && item.getType() == Material.FIREWORK_ROCKET)
-                .collect(Collectors.toList()).get(0);
+        ItemStack nuclear = items.stream()
+                .filter(item -> item.getType() == Material.FIREWORK_ROCKET).findFirst().orElseThrow();
 
-        ItemStack coordsPaper = Arrays.stream(event.getInventory().getMatrix())
-                .filter(item -> item != null && item.getType() == Material.PAPER)
-                .collect(Collectors.toList()).get(0);
-
-//        for (ItemStack itemStack : collect) {
-//            Bukkit.broadcastMessage(itemStack.getType().toString());
-//        }
-
-//        Arrays.stream(event.getInventory().getMatrix())
-
+        ItemStack coordsPaper = items.stream()
+                .filter(item -> item.getType() == Material.PAPER).findFirst().orElseThrow();
 
         if(!nuclear.getItemMeta().getPersistentDataContainer().has(Keys.NUCLEAR_ITEM, PersistentDataType.INTEGER)){
             event.setCancelled(true);
