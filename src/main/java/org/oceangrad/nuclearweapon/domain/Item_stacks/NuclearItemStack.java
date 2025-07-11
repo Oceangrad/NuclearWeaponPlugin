@@ -5,6 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.components.CustomModelDataComponent;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Vector;
 import org.oceangrad.nuclearweapon.util.Keys;
@@ -20,7 +21,6 @@ public final class NuclearItemStack {
 
         nuclearMeta.setDisplayName("Nuclear Rocket");
         nuclearMeta.getPersistentDataContainer().set(Keys.NUCLEAR_ITEM, PersistentDataType.INTEGER, 0);
-//        nuclearMeta.getPersistentDataContainer().set(NamespacedKey.fromString("world"), PersistentDataType.STRING, world.getName());
 
         nuclearMeta.getPersistentDataContainer().set(NamespacedKey.fromString("x-start"), PersistentDataType.FLOAT, (float) from.getX());
         nuclearMeta.getPersistentDataContainer().set(NamespacedKey.fromString("x-end"), PersistentDataType.FLOAT, (float) to.getX());
@@ -31,6 +31,10 @@ public final class NuclearItemStack {
         nuclearMeta.getPersistentDataContainer().set(NamespacedKey.fromString("y-start"), PersistentDataType.FLOAT, (float) from.getY());
 
         nuclearMeta.setLore(List.of(String.format(ChatColor.GOLD + "x: %s; z: %s", to.getX()-0.5, to.getZ()-0.5)));
+
+        CustomModelDataComponent customData = nuclearMeta.getCustomModelDataComponent();
+        customData.setFloats(List.of(567890430547f));
+        nuclearMeta.setCustomModelDataComponent(customData);
 
         nuclearStack.setItemMeta(nuclearMeta);
 
